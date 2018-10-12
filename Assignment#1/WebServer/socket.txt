@@ -1,0 +1,18 @@
+socket.bind(address)
+Bind the socket to address. The socket must not already be bound. (The format of address depends on the address family — see above.)
+
+socket.connect(address)
+Connect to a remote socket at address. (The format of address depends on the address family — see above.)
+
+socket.listen([backlog])
+Enable a server to accept connections. If backlog is specified, it must be at least 0 (if it is lower, it is set to 0); it specifies the number of unaccepted connections that the system will allow before refusing new connections. If not specified, a default reasonable value is chosen.
+
+socket.recv(bufsize[, flags])
+Receive data from the socket. The return value is a bytes object representing the data received. The maximum amount of data to be received at once is specified by bufsize. See the Unix manual page recv(2) for the meaning of the optional argument flags; it defaults to zero.
+Note For best match with hardware and network realities, the value of bufsize should be a relatively small power of 2, for example, 4096.
+
+socket.accept()
+Accept a connection. The socket must be bound to an address and listening for connections. The return value is a pair (conn, address) where conn is a new socket object usable to send and receive data on the connection, and address is the address bound to the socket on the other end of the connection.
+
+socket.send(bytes[, flags])
+Send data to the socket. The socket must be connected to a remote socket. The optional flags argument has the same meaning as for recv() above. Returns the number of bytes sent. Applications are responsible for checking that all data has been sent; if only some of the data was transmitted, the application needs to attempt delivery of the remaining data. For further information on this topic, consult the Socket Programming HOWTO.

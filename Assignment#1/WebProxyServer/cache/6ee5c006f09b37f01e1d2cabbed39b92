@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="shortcut icon" href="http://shared.ydstatic.com/images/favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width; initial-scale=1.4; minimum-scale=1.0; maximum-scale=2.0"/>
+<style type="text/css">
+html,body {background-color:#fff;font-size:13px; font-family: arial,sans-serif; vertical-align:middle;}
+a {border-bottom: 1px solid #0000FF; color:#0000FF; text-decoration: none;}
+form{margin:0;}
+.green {color:#008000; }
+.gray {color:#808080; }
+.red {color:#d91010; }
+.title {margin:0 0 5px;height:16px;line-height:16px;font-size:14px; font-weight: bold;}
+.title img {vertical-align:text-bottom;middle;margin-right:5px;}
+.category {background-color:#d0dff4; border-top:1px solid #588acb; padding:2px; margin-bottom:2px; margin-top:6px; }
+.content{margin-bottom:10px;line-height:140%;}
+.more {border: 1px solid rgb(196, 228, 228); padding: 2px;  background-color: rgb(244, 244, 244);margin-bottom:6px; margin-top:6px;}
+.tips{border:1px solid #c4e4e4;background-color:#f4f4f4;padding:2px;}
+.tip{color:#808080; margin: 1px 0px 5px;}
+.related{margin-bottom:6px; margin-top:6px;}
+.typo{margin-bottom:6px; font-size:small;}
+</style><title>有道海量词典</title></head><body><div class="title"><img height="16" width="31" class="logo" src="http://shared.youdao.com/images/mobile/logo-mobile.gif" alt="有道"/>有道词典</div>
+<form action="m/search" method="get"><div><input type="hidden" name="keyfrom" value="dict.mindex"/>
+<input type="hidden" name="vendor" value="">
+<input type="text" name="q" size="10" maxlength="256"/> <input type="submit" value="查词"/><br/></div></form><div class="content"><img height="16" border="0" align="absmiddle" width="12" src="images/download.gif" alt=""/>
+	<a href="http://m.youdao.com/download">下载手机词典客户端</a><br/><hr class="gray"/>
+<a href="/mhelp?s=0">词典帮助</a><br/>
+<a href="http://m.youdao.com/translate">整句翻译</a><br/>
+<a href="http://m.youdao.com">有道首页</a><br/>
+<a href="http://m.youdao.com/feedback?prodtype=dict.m">反馈意见</a><br/>切换到<a href="/?cookie=new">PC版</a><br/>&copy;2018 网易公司</div></body></html>
