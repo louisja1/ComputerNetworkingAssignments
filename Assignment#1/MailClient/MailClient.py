@@ -2,7 +2,7 @@ import socket
 import base64
 import ssl
 
-msg = "\r\n Wu Xuanyi is so beautiful"
+msg = "\r\n Do you want to fuck with me?"
 endmsg = "\r\n.\r\n"
 # Choose a mail server (e.g. Google mail server) and call it mailserver
 mailserver = ("smtp.qq.com", 587)#Fill in start #Fill in end
@@ -63,7 +63,7 @@ print("Receive #7 : %s" % str(recv7))
 # Fill in end
 # Send RCPT TO command and print server response.
 # Fill in start
-toCommand = "RCPT TO: <louisja1@sjtu.edu.cn>\r\n"
+toCommand = "RCPT TO: <674808516@qq.com>\r\n"
 clientSocket.send(toCommand.encode())
 recv8 = clientSocket.recv(1024)
 print("Receive #8 : %s" % str(recv8))
@@ -76,7 +76,7 @@ recv9 = clientSocket.recv(1024)
 print("Receive #9 : %s" % str(recv9))
 # Fill in end
 # Send Header
-Header = 'From: \"LiuYuxi\" <{674808516@qq.com}>\r\nTo: \"Liuyuxi\"<{674808516@qq.com}>\r\nSubject: Beauty\r\n'
+Header = 'From: \"Jiangmengjuan\" <{dengwxn@sjtu.edu.cn}>\r\nTo: \"Liuyuxi\"<{dengwxn@sjtu.edu.cn}>\r\nSubject: Fuck with me\r\n'
 clientSocket.send(Header.encode())
 # Send MIME header
 mimeHeader = '\r\n'.join(('MIME-Version: 1.0', 'Content-Type: multipart/mixed; boundary=frontier', '\r\n'))
