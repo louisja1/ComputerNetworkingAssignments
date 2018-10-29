@@ -71,7 +71,7 @@ public class Iperfer {
                 output.close();
                 clientSocket.close();
                 System.out.println("===== Summary ======");
-                System.out.printf("received = %d KB  rate = %.3f Mbps\n", iteration, iteration / 125.0 / duration);
+                System.out.printf("sent = %d KB  rate = %.3f Mbps\n", iteration, iteration / 125.0 / duration);
             } catch (IOException e) {
                 System.out.println("Exception : " + e.getMessage());
                 System.exit(5);
@@ -116,8 +116,8 @@ public class Iperfer {
                 }
 
                 double duration = System.currentTimeMillis() / 1000.0 - startTime;
-                System.out.println(duration);
-                System.out.println(total);
+                //System.out.println(duration);
+                //System.out.println(total);
 
                 input.close();
                 serverSocket.close();

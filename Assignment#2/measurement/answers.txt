@@ -1,0 +1,102 @@
+===========================
+
+516030910583
+刘予希
+
+===========================
+
+* Q1 :
+
+Running ping and Iperfer in Mininet. I get Latency_L#.txt(L1 - L5) and throughput_L#.txt(L1 - L5).
+
+===========================
+
+* Q2 :
+
+Expected results :
+    Latency : L1.delay + L2.delay + L3.delay = 40 + 10 + 30 = 80 (ms)
+    Throughput : min(L1.bw, L2.bw, L3.bw) = min(20, 40, 30) = 20 (Mbps)
+
+Experimental results :
+    Latency : avg rtt / 2 = 164.203 / 2 = 82.1015 (ms)
+    Throughput : 20.823 (Mbps)
+
+===========================
+
+* Q3 :
+
+** Two pairs :
+
+    Expected results :
+        Latency : L1.delay + L2.delay + L3.delay = 80 (ms)
+        Throughput : min(L1.bw, L2.bw, L3.bw) / 2 = 10 (Mbps)
+
+    Experimental results :
+        h1 - h4 :
+        Latency : 165.014 / 2 = 82.507 (ms)
+        Throughput : 15.562 (Mbps)
+
+        h7 - h9 :
+        Latency : 162.834 / 2 = 81.417 (ms)
+        Throughput : 5.953 (Mbps)
+
+** Three pairs :
+
+    Expected results :
+        Latecy : L1.delay + L2.delay + L3.delay = 80 (ms)
+        Throughput : min(L1.bw, L2.bw, L3.bw) / 3 = 6.7 (Mbps)
+
+    Experimental results :
+        h1 - h4 :
+        Latency : 165.339 / 2 = 82.670 (ms)
+        Throughput : 13.040 (Mbps)
+
+        h7 - h9 :
+        Latency : 166.422 / 2 = 83.211 (ms)
+        Throughput : 3.812 (Mbps)
+
+        h8 - h10 :
+        Latency : 165.465 / 2 = 82.733 (ms)
+        Throughput : 2.527 (Mbps)
+
+* Reason :
+Expected latency is the sum of the latencies of the links along the path.
+The latency does not vary with such a small pair of hosts communicating simultaneously as the transmission and propagation times are much much less than the queuing delays.
+As the number of hosts increase, latency might increase but it is difficult to simulate such behaviour in this limited setting.
+
+Expected throughput is the link with the least throughput along the path divided by the number of simultaneous connections.
+The experimental results do not seem to be consistent with the expected results.
+The major reason for this is the systematic error, because we can not really measure the throughputs simultaneously. (I just use xterm of each nodes and run their own commands as fast as I can)
+
+===========================
+
+* Q4 :
+
+Expected results :
+    h1 - h4 :
+    Latency : L1.delay + L2.delay + L3.delay = 80 (ms)
+    Throughput : min(L1.bw, L2.bw, L3.bw) - (45 - 40) / 2 = 20 - 2.5 = 17.5 (Mbps)
+
+    h5 - h6 :
+    Latency : L2.delay + L4.delay + L5.delay = 20 (ms)
+    Throughput : min(L4.bw, L2.bw, L5.bw) - (45 - 40) / 2 = 25 - 2.5 = 22.5 (Mbps)
+
+Experimental results :
+    h1 - h4 :
+    Latency : 162.650 / 2 = 81.325 (ms)
+    Throughput : 17.609 (Mbps)
+
+    h5 - h6 ;
+    Latency : 42.346 / 2 = 21.173 (ms)
+    Throughput : 22.409 (Mbps)
+
+* Reason :
+
+Expected latency is the sum of the latencies of the links along the path.
+
+Without simultaneous connections, h1 - h4's expected throughput is 20 Mbps and h5 - h6's expected throughput is 25 Mbps.
+So the total throughput is 45 and bigger than L2.bw(40).
+So it falls 5 Mbps because of the limitation. And I think that h1-h4 and h5-h6 will share the loss evenly.
+Then expected results will be subtracted from their loss.
+
+===========================

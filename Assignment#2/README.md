@@ -26,3 +26,19 @@ java Iperfer -s -p <listen port>
 + Python Interpreter
 + Link Up/Down
 + XTerm Display
+### Step 3 Measurements in Mininet
+It is important and convenient to use the `Xterm Display` for those required hosts. <br>
+Desperately, I do the simultaneous experiment by my APM(action per minute). <br>
+#### Latency
+I measure the latency of the link or path by firstly measuring the RTT(latency = RTT / 2) between corresponding hosts using the tool `ping`.
+```
+ping -c <count> <IP>
+```
+#### Throughput
+I measure the throughput of the link or path by measuring the rate between corresponding hosts using my own tool `Iperfer`.
+``` Client Mode
+java Iperfer -c -h <server hostname> -p <server port> -t <time>
+```
+``` Server Mode
+java Iperfer -s -p <listen port>
+```

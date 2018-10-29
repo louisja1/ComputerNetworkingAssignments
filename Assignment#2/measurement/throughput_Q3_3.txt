@@ -1,0 +1,18 @@
+=============== Server Mode ===============
+=============== Server Mode ===============
+=============== Server Mode ===============
+=============== Client Mode ===============
+=============== Client Mode ===============
+=============== Client Mode ===============
+===== Summary ======
+sent = 9657 KB  rate = 3.812 Mbps
+===== Summary ======
+sent = 7039 KB  rate = 2.527 Mbps
+===== Summary ======
+sent = 39761 KB  rate = 13.040 Mbps
+===== Summary ======
+received = 9657 KB  rate = 2.742 Mbps
+===== Summary ======
+received = 7039 KB  rate = 2.091 Mbps
+===== Summary ======
+received = 39761 KB  rate = 10.281 Mbps
