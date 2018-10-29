@@ -13,3 +13,5 @@ Mininet & Performance. <br>
 I write a [Iperfer.java](https://github.com/louisja1/ComputerNetworkingAssignments/tree/master/Assignment%232/Iperfer/src/Iperfer.java) to implement my own version of iperf to measure network bandwidth using sockets.
 ### Step 2.[Mininet Tutorial](http://mininet.org/walkthrough/) <br>
 Learn to run and interact with Mininet.
+### Step 3.[Measurements in Mininet](https://github.com/louisja1/ComputerNetworkingAssignments/tree/master/Assignment%232/measurement/)
+I use the tool `ping` and my own tool `Iperfer` to measure the mininet and get the results. There is also a [answers.txt](https://github.com/louisja1/ComputerNetworkingAssignments/tree/master/Assignment%232/measurement/answers.txt) for the 4 questions.
