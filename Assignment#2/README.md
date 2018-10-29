@@ -9,3 +9,20 @@ java Iperfer -c -h <server hostname> -p <server port> -t <time>
 ``` Server Mode
 java Iperfer -s -p <listen port>
 ```
+### Step 2 Mininet Tutorial
+#### Part 1: Everyday Mininet Usage
++ Display Startup Options
++ Interact with Hosts and Switches
++ Test connectivity between hosts
++ Run a simple web server and client
++ Cleanup
+#### Part 2: Advanced Startup Options
++ Run a Regression Test
++ Changing Topology Size and Type
++ Link variations
++ Adjustable Verbosity
+#### Part 3: Mininet Command-Line Interface (CLI) Commands
++ Display Options
++ Python Interpreter
++ Link Up/Down
++ XTerm Display
