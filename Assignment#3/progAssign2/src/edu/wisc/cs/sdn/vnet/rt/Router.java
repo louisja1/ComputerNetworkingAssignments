@@ -104,13 +104,15 @@ public class Router extends Device
                 return; //drop
             }
             header.resetChecksum();
-            for (Iface iface : interfaces.values()) {
+            byte[] sendHeader = header.serialize();
+            header.deserialize(sendHeader, 0, sendHeader.length);
+            for (Iface iface : this.interfaces.values()) {
                 if (iface.getIpAddress() == header.getDestinationAddress()) {
                     return; //drop
                 }
             }
             //forwarding
-            RouteEntry destinationRoute = routeTable.lookup(header.getDestinationAddress());
+            RouteEntry destinationRoute = this.routeTable.lookup(header.getDestinationAddress());
             if (destinationRoute == null) {
                 return; //drop
             }
@@ -123,7 +125,7 @@ public class Router extends Device
             if (nextHopIP == 0) { //next hop is the destination ip
                 nextHopIP = header.getDestinationAddress();
             }
-            ArpEntry arpEntry = arpCache.lookup(nextHopIP);
+            ArpEntry arpEntry = this.arpCache.lookup(nextHopIP);
             if (arpEntry == null) {
                 return; //cache miss
             }
