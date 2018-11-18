@@ -58,31 +58,31 @@ public class Switch extends Device
 		
 		/********************************************************************/
 		/* TODO: Handle packets                                             */
-        MACAddress sourceMAC = etherPacket.getSourceMAC();
-        MACAddress destinationMAC = etherPacket.getDestinationMAC();
-        if (!forwardingTable.containsKey(sourceMAC)) {
-            forwardingTable.put(sourceMAC, new TableEntry(inIface, System.currentTimeMillis()));
-        } else {
-            (forwardingTable.get(sourceMAC)).setTime(System.currentTimeMillis());
-        }
-        if (forwardingTable.containsKey(destinationMAC)) {
-            TableEntry destinationEntry = forwardingTable.get(destinationMAC);
-            if (System.currentTimeMillis() - destinationEntry.getTime() > 15000) {
-                for (Iface iface : interfaces.values()) {
-                    if (!iface.equals(inIface)) {
-                        sendPacket(etherPacket, iface);
-                    }
-                }
-            } else {
-                sendPacket(etherPacket, destinationEntry.getIface());
-            }
-        } else {
-            for (Iface iface : interfaces.values()) {
-                if (!iface.equals(inIface)) {
-                    sendPacket(etherPacket, iface);
-                }
-            }
-        }
+		MACAddress sourceMAC = etherPacket.getSourceMAC();
+		MACAddress destinationMAC = etherPacket.getDestinationMAC();
+		if (!forwardingTable.containsKey(sourceMAC)) {
+		    forwardingTable.put(sourceMAC, new TableEntry(inIface, System.currentTimeMillis()));
+		} else {
+		    (forwardingTable.get(sourceMAC)).setTime(System.currentTimeMillis());
+		}
+		if (forwardingTable.containsKey(destinationMAC)) {
+		    TableEntry destinationEntry = forwardingTable.get(destinationMAC);
+		    if (System.currentTimeMillis() - destinationEntry.getTime() > 15000) {
+		        for (Iface iface : interfaces.values()) {
+		            if (!iface.equals(inIface)) {
+		                sendPacket(etherPacket, iface);
+		            }
+		        }
+		    } else {
+		        sendPacket(etherPacket, destinationEntry.getIface());
+		    }
+		} else {
+		    for (Iface iface : interfaces.values()) {
+		        if (!iface.equals(inIface)) {
+		            sendPacket(etherPacket, iface);
+		        }
+		    }
+		}
 		/********************************************************************/
 
 	}

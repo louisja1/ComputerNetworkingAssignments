@@ -89,51 +89,49 @@ public class Router extends Device
 		if (etherPacket.getEtherType() != Ethernet.TYPE_IPv4) {
 			return; //drop
 		} else {
-            IPv4 header = (IPv4) etherPacket.getPayload();
-            int headerBytes = header.getHeaderLength() * 4;
-            short originalChecksum = header.getChecksum();
-            header.resetChecksum();
-            byte[] tmp = header.serialize();
-            header.deserialize(tmp, 0, tmp.length);
-            if (originalChecksum != header.getChecksum()) {
-                return; //drop
-            }
-            if (header.getTtl() > 0) {
-                header.setTtl((byte) (header.getTtl() - 1));
-            } else {
-                return; //drop
-            }
-            header.resetChecksum();
-            byte[] sendHeader = header.serialize();
-            header.deserialize(sendHeader, 0, sendHeader.length);
-            for (Iface iface : this.interfaces.values()) {
-                if (iface.getIpAddress() == header.getDestinationAddress()) {
-                    return; //drop
-                }
-            }
-            //forwarding
-            RouteEntry destinationRoute = this.routeTable.lookup(header.getDestinationAddress());
-            if (destinationRoute == null) {
-                return; //drop
-            }
-            Iface outIface = destinationRoute.getInterface();
-            if (outIface == inIface) {
-                return; //error
-            }
-            MACAddress sourceMAC = outIface.getMacAddress();
-            int nextHopIP = destinationRoute.getGatewayAddress();
-            if (nextHopIP == 0) { //next hop is the destination ip
-                nextHopIP = header.getDestinationAddress();
-            }
-            ArpEntry arpEntry = this.arpCache.lookup(nextHopIP);
-            if (arpEntry == null) {
-                return; //cache miss
-            }
-            MACAddress nextHopMAC = arpEntry.getMac();
-            etherPacket.setSourceMACAddress(sourceMAC.toBytes());
-            etherPacket.setDestinationMACAddress(nextHopMAC.toBytes());
-            System.out.println("The status of sending packet is " + sendPacket(etherPacket, outIface));
-        }
+		    IPv4 header = (IPv4) etherPacket.getPayload();
+		    int headerBytes = header.getHeaderLength() * 4;
+		    short originalChecksum = header.getChecksum();
+		    header.resetChecksum();
+		    byte[] tmp = header.serialize();
+		    header.deserialize(tmp, 0, tmp.length);
+		    if (originalChecksum != header.getChecksum()) {
+		        return; //drop
+		    }
+		    if (header.getTtl() > 0) {
+		        header.setTtl((byte) (header.getTtl() - 1));
+		    } else {
+		        return; //drop
+		    }
+		    header.resetChecksum();
+		    for (Iface iface : interfaces.values()) {
+		        if (iface.getIpAddress() == header.getDestinationAddress()) {
+		            return; //drop
+		        }
+		    }
+		    //forwarding
+		    RouteEntry destinationRoute = routeTable.lookup(header.getDestinationAddress());
+		    if (destinationRoute == null) {
+		        return; //drop
+		    }
+		    Iface outIface = destinationRoute.getInterface();
+		    if (outIface == inIface) {
+		        return; //error
+		    }
+		    MACAddress sourceMAC = outIface.getMacAddress();
+		    int nextHopIP = destinationRoute.getGatewayAddress();
+		    if (nextHopIP == 0) { //next hop is the destination ip
+		        nextHopIP = header.getDestinationAddress();
+		    }
+		    ArpEntry arpEntry = arpCache.lookup(nextHopIP);
+		    if (arpEntry == null) {
+		        return; //cache miss
+		    }
+		    MACAddress nextHopMAC = arpEntry.getMac();
+		    etherPacket.setSourceMACAddress(sourceMAC.toBytes());
+		    etherPacket.setDestinationMACAddress(nextHopMAC.toBytes());
+		    System.out.println("The status of sending packet is " + sendPacket(etherPacket, outIface));
+		}
 		
 		/********************************************************************/
 	}
