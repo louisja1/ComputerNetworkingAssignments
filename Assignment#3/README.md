@@ -58,7 +58,7 @@ You will need to add structures and/or classes to track the MAC addresses, and a
 cd ~/progAssign2/
 ```
 ```
-sudo python ./run_mininet.py topos/single_sw.topo
+sudo python ./run_mininet.py topos/single_sw.topo -a
 ```
 2.Open another terminal. Start the controller, by running the following commands:
 ```
